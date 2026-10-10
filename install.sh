@@ -77,16 +77,10 @@ cp car/crontab.root.txt "$home/crontab.root.txt"
 
 # ---------- 数据库 ----------
 echo "[4/6] 初始化数据库 ..."
-echo "   设置 Web 登录账号（留空使用默认 admin）:"
-read -r -p "   用户名: " web_user
-web_user=${web_user:-admin}
-read -r -s -p "   密码: " web_pass
-echo ""
-web_pass=${web_pass:-admin123}
 mkdir -p "$home/db"
 sqlite3 "$home/db/db.db" "CREATE TABLE IF NOT EXISTS settings(app TEXT, param TEXT, data TEXT); CREATE TABLE IF NOT EXISTS config(key TEXT PRIMARY KEY, value TEXT);" 2>/dev/null || true
-sqlite3 "$home/db/db.db" "INSERT OR REPLACE INTO settings(app,param,data) VALUES('global','USER_ID','$web_user'); INSERT OR REPLACE INTO settings(app,param,data) VALUES('global','USER_PASSWORD','$web_pass'); INSERT OR REPLACE INTO config(key,value) VALUES('appOn','1');" 2>/dev/null || true
-echo "   Web 账号: $web_user (登录后请立即修改密码)"
+sqlite3 "$home/db/db.db" "INSERT OR REPLACE INTO settings(app,param,data) VALUES('global','USER_ID','admin'); INSERT OR REPLACE INTO settings(app,param,data) VALUES('global','USER_PASSWORD','admin123'); INSERT OR REPLACE INTO config(key,value) VALUES('appOn','1');" 2>/dev/null || true
+echo "   默认账号: admin / admin123 (登录后请立即修改)"
 
 # ---------- 启动 ----------
 echo "[5/6] 启动服务 ..."
@@ -132,7 +126,7 @@ echo " ✅ 部署完成!"
 echo "=============================================="
 echo "  车机浏览器访问:  http://127.0.0.1:8018"
 echo "  同网设备访问:    http://<车机IP>:8018"
-echo "  Web 账号:        安装时你设置的账号 (登录后请立即修改)"
+echo "  Web 账号:        admin / admin123 (登录后请立即修改)"
 echo ""
 echo "  ⚠ 远程访问 (frp): 编辑 ~/frp/frpc.toml 填入你的 frps 服务器"
 echo "    地址和 token, 然后执行: bash ~/boot/frpc.sh"
