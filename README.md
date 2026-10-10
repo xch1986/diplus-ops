@@ -79,7 +79,7 @@ bash <(curl -sSL https://raw.githubusercontent.com/xch1986/diplus-ops/main/insta
 1. 下载代码包 `diplus-ops.zip` 并解压
 2. 安装依赖（nginx / php / sqlite / cronie / frp）
 3. 部署 web 服务到 `~/`（www / nginx / php / boot / frp）
-4. 初始化数据库并写入默认账号（**xch / 1234Qwer**，登录后请立即修改）
+4. 初始化数据库（Web 登录账号由安装脚本交互式设置，**仓库不含任何真实凭据**）
 5. 启动 nginx + php-fpm + crond（含告警轮询 crontab）
 6. 检测到 root 时自动安装 Magisk 保活模块 + 守护 crontab
 
