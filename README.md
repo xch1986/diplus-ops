@@ -66,7 +66,26 @@ diplus-ops/
     └── php/                 # php.ini
 ```
 
-## 快速开始
+## 一键部署（推荐）
+
+在车机 **Termux** 中直接执行（参考原版 diplus-www 的一键安装方式）：
+
+```bash
+bash <(curl -sSL https://raw.githubusercontent.com/xch1986/diplus-ops/main/install.sh)
+```
+
+脚本自动完成：
+
+1. 下载代码包 `diplus-ops.zip` 并解压
+2. 安装依赖（nginx / php / sqlite / cronie / frp）
+3. 部署 web 服务到 `~/`（www / nginx / php / boot / frp）
+4. 初始化数据库并写入默认账号（**xch / 1234Qwer**，登录后请立即修改）
+5. 启动 nginx + php-fpm + crond（含告警轮询 crontab）
+6. 检测到 root 时自动安装 Magisk 保活模块 + 守护 crontab
+
+> `openlist` / `lucky` 为第三方工具，二进制需自行放置到 `$PREFIX/bin`，脚本会检测并提示。
+
+## 快速开始（手动部署）
 
 ### 前置
 
