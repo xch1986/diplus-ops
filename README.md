@@ -66,6 +66,16 @@ diplus-ops/
     └── php/                 # php.ini
 ```
 
+## 前置条件
+
+| 项目 | 要求 |
+|---|---|
+| 车机 | BYD DiLink（或任意 Android），**已 root（Magisk）**——Magisk 保活模块、root crontab 守护均依赖 root |
+| Termux | 车机已安装 Termux（一键部署脚本在 Termux 内执行） |
+| UFI / 随身 Wi-Fi | **已 root**——提供 4G 网络、frp 隧道与公网远程访问（UFI-TOOLS 通道） |
+| 网络 | 车机连接 UFI 热点（同局域网，Android 热点默认网段 192.168.43.x） |
+| frps 服务器 | 一台公网 frps 服务器（或自建），提供隧道入口 |
+
 ## 一键部署（推荐）
 
 在车机 **Termux** 中直接执行（参考原版 diplus-www 的一键安装方式）：
@@ -84,14 +94,6 @@ bash <(curl -sSL https://raw.githubusercontent.com/xch1986/diplus-ops/main/insta
 6. 检测到 root 时自动安装 Magisk 保活模块 + 守护 crontab
 
 > `openlist` / `lucky` 为第三方工具，二进制需自行放置到 `$PREFIX/bin`，脚本会检测并提示。
-
-## 车机存储共享（供 UFI OpenList 访问）
-
-车机 Magisk 模块 `car-storage-share-v1.0.zip`（另行交付，不入本仓库）：开机自动共享 `/storage/emulated/0`（WebDAV `:8019`，默认账号 `admin / admin123`，刷入后请在配置中修改）。
-
-- **车机**：Magisk 刷入模块（装/卸都在 Magisk，卸载自动停服务）
-- **UFI OpenList**：添加存储 → 驱动 **WebDAV** → 地址 `http://<车机内网IP>:8019/` → 账号 admin/admin123 → 挂载路径 `/car`
-- **公网访问**：`http://<frp地址>:4244/car`（经 UFI frp 隧道）
 
 ## 快速开始（手动部署）
 
