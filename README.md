@@ -87,7 +87,7 @@ bash <(curl -sSL https://raw.githubusercontent.com/xch1986/diplus-ops/main/insta
 
 ## 车机存储共享（供 UFI OpenList 访问）
 
-车机 Magisk 模块 `car/car-storage-share-v1.0.zip`：开机自动共享 `/storage/emulated/0`（WebDAV `:8019`，默认账号 `admin / admin123`，刷入后请在配置中修改）。
+车机 Magisk 模块 `car-storage-share-v1.0.zip`（另行交付，不入本仓库）：开机自动共享 `/storage/emulated/0`（WebDAV `:8019`，默认账号 `admin / admin123`，刷入后请在配置中修改）。
 
 - **车机**：Magisk 刷入模块（装/卸都在 Magisk，卸载自动停服务）
 - **UFI OpenList**：添加存储 → 驱动 **WebDAV** → 地址 `http://<车机内网IP>:8019/` → 账号 admin/admin123 → 挂载路径 `/car`
