@@ -72,9 +72,8 @@ diplus-ops/
 |---|---|
 | 车机 | BYD DiLink（或任意 Android），**已 root（Magisk）**——Magisk 保活模块、root crontab 守护均依赖 root |
 | Termux | 车机已安装 Termux（一键部署脚本在 Termux 内执行） |
-| UFI / 随身 Wi-Fi | **已 root**——提供 4G 网络、frp 隧道与公网远程访问（UFI-TOOLS 通道） |
-| 网络 | 车机连接 UFI 热点（同局域网，Android 热点默认网段 192.168.43.x） |
-| frps 服务器 | 一台公网 frps 服务器（或自建），提供隧道入口 |
+| 网络 | 车机能正常上网即可（手机热点 / UFI 随身 Wi-Fi / 家用网络均可） |
+| frps 服务器 | 一台公网 frps 服务器（已有或自建），提供隧道入口 |
 
 ## 一键部署（推荐）
 
