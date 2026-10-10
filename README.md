@@ -79,11 +79,19 @@ bash <(curl -sSL https://raw.githubusercontent.com/xch1986/diplus-ops/main/insta
 1. 下载代码包 `diplus-ops.zip` 并解压
 2. 安装依赖（nginx / php / sqlite / cronie / frp）
 3. 部署 web 服务到 `~/`（www / nginx / php / boot / frp）
-4. 初始化数据库（Web 登录账号由安装脚本交互式设置，**仓库不含任何真实凭据**）
+4. 初始化数据库并写入默认账号（**admin / admin123**，登录后请立即修改）
 5. 启动 nginx + php-fpm + crond（含告警轮询 crontab）
 6. 检测到 root 时自动安装 Magisk 保活模块 + 守护 crontab
 
 > `openlist` / `lucky` 为第三方工具，二进制需自行放置到 `$PREFIX/bin`，脚本会检测并提示。
+
+## 车机存储共享（供 UFI OpenList 访问）
+
+车机 Magisk 模块 `car/car-storage-share-v1.0.zip`：开机自动共享 `/storage/emulated/0`（WebDAV `:8019`，默认账号 `admin / admin123`，刷入后请在配置中修改）。
+
+- **车机**：Magisk 刷入模块（装/卸都在 Magisk，卸载自动停服务）
+- **UFI OpenList**：添加存储 → 驱动 **WebDAV** → 地址 `http://<车机内网IP>:8019/` → 账号 admin/admin123 → 挂载路径 `/car`
+- **公网访问**：`http://<frp地址>:4244/car`（经 UFI frp 隧道）
 
 ## 快速开始（手动部署）
 
